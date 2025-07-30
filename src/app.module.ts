@@ -6,7 +6,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { RedisModule } from './redis/redis.module';
-import { VehicesModule } from './vehices/vehices.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { VehicesModule } from './vehices/vehices.module';
     RolesModule,
     UsersModule,
     AuthModule,
-    VehicesModule,
+    VehiclesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
