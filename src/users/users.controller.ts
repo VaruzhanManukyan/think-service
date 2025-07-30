@@ -5,6 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Roles } from 'src/common/decorators/role.decorator';
 import { Role } from 'src/common/enums/role.enum';
 import { Authorization } from 'src/auth/decorators/authorization.decorator';
+import { addVehicleDto } from './dto/add-vehicle.dto';
 
 @Controller('users')
 export class UsersController {
@@ -50,5 +51,19 @@ export class UsersController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
+  }
+
+  @Authorization()
+  @Roles([Role.ADMIN, Role.USER, Role.MASTER])
+  @Post('addVehicle')
+  addVehicle(@Body() dto: addVehicleDto) {
+    return this.usersService.addVehicle(dto);
+  }
+
+  @Authorization()
+  @Roles([Role.ADMIN, Role.USER, Role.MASTER])
+  @Get('findVehicles/:id')
+  findVehicles(@Param('id') id: string) {
+    return this.usersService.findVehicles(id);
   }
 }
